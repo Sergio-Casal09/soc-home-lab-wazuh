@@ -386,13 +386,150 @@ Las detecciones fueron probadas mediante actividad controlada dentro del laborat
 
 ---
 
+### 🧠 MITRE ATT&CK
 
+| Táctica           | Técnica                           | Evidencia                | Regla  |
+|-------------------|-----------------------------------|--------------------------|--------|
+| Execution         | T1059.001 — PowerShell            | Event 4104               | 100110 |
+| Execution         | T1059.003 — Windows Command Shell | Sysmon Event 1           | 100121 |
+| Execution         | T1059.001 — PowerShell            | PowerShell → secedit     | 100123 |
+| Credential Access | T1110.001 — Password Guessing     | Event 4625 + correlación | 100101 |
 
+---
 
+### 📊 Dashboard SOC
 
+Se creó un dashboard de Wazuh denominado:
 
+```text
+SOC LAB - Windows Detection Overview
+```
 
+#### Visualizaciones
+- Alertas por nivel de severidad
+- Alertas de PowerShell sospechoso
+- Cadenas de ejecución detectadas
 
+El dashboard proporciona una vista operativa del laboratorio y facilita el análisis de las detecciones generadas durante las pruebas.
 
+---
 
+### 📸 Evidencias
 
+Las evidencias del laboratorio se encuentran en:
+
+```text
+screenshots/
+```
+
+Incluyen:
+
+- Dashboard de Wazuh
+- Regla 100110 — PowerShell + Event ID 4104
+- Regla 100121 — PowerShell → cmd.exe
+- Regla 100123 — PowerShell → secedit.exe
+- Sysmon Event ID 1
+
+También se incluye el informe técnico completo:
+
+```text
+docs/SOC_Home_Lab_Informe_Final.pdf
+```
+---
+
+### 📁 Estructura del repositorio
+
+```text
+soc-home-lab-wazuh/
+│
+├── README.md
+├── LICENSE
+├── .gitignore
+│
+├── architecture/
+│   └── architecture.md
+│
+├── detections/
+│   └── custom_rules.xml
+│
+├── sysmon/
+│   └── sysmonconfig.xml
+│
+├── screenshots/
+│   ├── wazuh-dashboard.png
+│   ├── detection-powershell.png
+│   ├── detection-powershell-cmd.png
+│   ├── detection-powershell-secedit.png
+│   └── sysmon-event1.png
+│
+└── docs/
+    └── SOC_Home_Lab_Informe_Final.pdf
+```
+---
+
+### 🔐 Seguridad
+
+Este proyecto utiliza un entorno de laboratorio aislado.
+
+No se incluyen:
+
+- contraseñas
+- credenciales
+- claves privadas
+- tokens
+- discos de máquinas virtuales
+- secretos de configuración
+
+Las pruebas se realizaron exclusivamente dentro del entorno controlado del laboratorio.
+
+---
+
+### 📚 Objetivos de aprendizaje
+
+Este proyecto permitió practicar:
+
+- Administración de Active Directory
+- Windows Security Events
+- PowerShell Logging
+- Sysmon
+- Wazuh
+- SIEM
+- Detection Engineering
+- MITRE ATT&CK
+- Análisis de procesos
+- Correlación de eventos
+- Construcción de dashboards SOC
+
+---
+
+### 📄 Documentación
+
+El informe técnico completo se encuentra en:
+
+```text
+docs/SOC_Home_Lab_Informe_Final.pdf
+```
+### 🚀 Estado del proyecto
+
+#### Completado
+
+El laboratorio demuestra un flujo completo de:
+
+```text
+Telemetry
+    ↓
+Collection
+    ↓
+Detection
+    ↓
+MITRE Mapping
+    ↓
+Alerting
+    ↓
+Visualization
+    ↓
+Evidence
+```
+### 👤 Proyecto personal
+
+Laboratorio desarrollado como proyecto práctico de formación orientado a operaciones de seguridad (SOC), monitorización, detección y análisis de eventos Windows.
