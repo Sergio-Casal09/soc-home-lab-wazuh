@@ -1,1 +1,145 @@
+<group name="local,syslog,sshd,windows,">
 
+  <!-- ========================================================= -->
+  <!-- 100100 - Windows Failed Logon                             -->
+  <!-- ========================================================= -->
+
+  <rule id="100100" level="5">
+    <if_sid>60105,60122</if_sid>
+
+    <description>
+      SOC LAB - Windows failed logon detected on $(win.eventdata.targetUserName)
+    </description>
+
+    <group>
+      windows,
+      authentication_failed,
+    </group>
+  </rule>
+
+
+  <!-- ========================================================= -->
+  <!-- 100101 - Possible Password Guessing                       -->
+  <!-- ========================================================= -->
+
+  <rule id="100101" level="10" frequency="5" timeframe="60">
+    <if_matched_sid>100100</if_matched_sid>
+
+    <same_field>
+      win.eventdata.targetUserName
+    </same_field>
+
+    <description>
+      SOC LAB - Possible password guessing: 5 failed logons for the same user within 60 seconds
+    </description>
+
+    <mitre>
+      <id>T1110.001</id>
+    </mitre>
+
+    <group>
+      windows,
+      authentication_failed,
+      brute_force,
+    </group>
+  </rule>
+
+
+  <!-- ========================================================= -->
+  <!-- 100110 - Suspicious PowerShell                            -->
+  <!-- ========================================================= -->
+
+  <rule id="100110" level="10">
+
+    <if_sid>91816,91809</if_sid>
+
+    <field name="win.eventdata.scriptBlockText" type="pcre2">
+      (?i)FromBase64String|Invoke-Expression|\bIEX\b
+    </field>
+
+    <description>
+      SOC LAB - Suspicious PowerShell execution/decoding detected in ScriptBlock
+    </description>
+
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+
+    <group>
+      windows,
+      powershell,
+      suspicious_execution,
+    </group>
+
+  </rule>
+
+
+  <!-- ========================================================= -->
+  <!-- 100121 - PowerShell -> cmd.exe                            -->
+  <!-- ========================================================= -->
+
+  <rule id="100121" level="10">
+
+    <if_group>sysmon_event1</if_group>
+
+    <field name="win.eventdata.parentImage" type="pcre2">
+      (?i)\\(?:powershell|pwsh)\.exe$
+    </field>
+
+    <field name="win.eventdata.image" type="pcre2">
+      (?i)\\cmd\.exe$
+    </field>
+
+    <description>
+      SOC LAB - PowerShell spawned Windows Command Shell
+    </description>
+
+    <mitre>
+      <id>T1059.001</id>
+      <id>T1059.003</id>
+    </mitre>
+
+    <group>
+      windows,
+      sysmon,
+      powershell,
+      execution_chain,
+    </group>
+
+  </rule>
+
+
+  <!-- ========================================================= -->
+  <!-- 100123 - PowerShell -> Sensitive System Utility           -->
+  <!-- ========================================================= -->
+
+  <rule id="100123" level="10">
+
+    <if_group>sysmon_event1</if_group>
+
+    <field name="win.eventdata.parentImage" type="pcre2">
+      (?i)\\(?:powershell|pwsh)\.exe$
+    </field>
+
+    <field name="win.eventdata.image" type="pcre2">
+      (?i)\\(?:secedit|certutil|nltest|bitsadmin)\.exe$
+    </field>
+
+    <description>
+      SOC LAB - PowerShell spawned sensitive system utility
+    </description>
+
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+
+    <group>
+      windows,
+      sysmon,
+      powershell,
+      execution_chain,
+    </group>
+
+  </rule>
+
+</group>
