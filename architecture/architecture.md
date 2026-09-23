@@ -120,22 +120,94 @@ SOC-LAB
 ├── Workstations
 └── Servers
 ```
+CLIENT01 is located inside:
 
+```text
+SOC-LAB
+└── Workstations
+```
+--- 
 
+## Windows Telemetry
 
+CLIENT01 is the main monitored endpoint.
 
+The endpoint generates telemetry through:
 
+### Windows Security Events
 
+Authentication activity is monitored through Windows Security Events,
+including Event ID:
 
+```text
+4625
+```
+### PowerShell
 
+The following logging mechanisms are enabled:
 
+- Script Block Logging
+- Module Logging
+- PowerShell Transcription
 
+PowerShell Script Block events are collected from:
 
+```text
+Microsoft-Windows-PowerShell/Operational
+```
+### Sysmon
 
+Sysmon provides process and system telemetry.
 
+The laboratory uses events including:
 
+```text
+Event ID 1  → Process Create
+Event ID 3  → Network Connection
+Event ID 11 → File Create
+Event ID 22 → DNS Query
+```
+Sysmon events are collected from:
 
+```text
+Microsoft-Windows-Sysmon/Operational
+```
+---
 
+## Wazuh Telemetry Flow
+
+The telemetry flow is:
+
+```text
+Windows Endpoint
+       │
+       ├── Security Events
+       │
+       ├── PowerShell
+       │
+       └── Sysmon
+             │
+             ▼
+        Wazuh Agent
+             │
+             ▼
+       Wazuh Manager
+             │
+             ▼
+      Detection Rules
+             │
+             ▼
+         Alerts
+             │
+             ▼
+      Wazuh Dashboard
+```
+
+## Detection Layer
+
+Custom Wazuh rules are used to detect specific activity.
+
+The laboratory contains the following custom rules:
 
 
 
