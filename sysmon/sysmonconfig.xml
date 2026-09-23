@@ -1,1 +1,45 @@
 
+<Sysmon schemaversion="4.90">
+  <HashAlgorithms>SHA256</HashAlgorithms>
+  <DnsLookup>true</DnsLookup>
+
+  <EventFiltering>
+
+    <!-- Process Creation -->
+    <ProcessCreate onmatch="include" />
+
+    <!-- Network Connection -->
+    <NetworkConnect onmatch="include" />
+
+    <!-- Process Termination -->
+    <ProcessTerminate onmatch="include" />
+
+    <!-- Image Loaded -->
+    <ImageLoad onmatch="include" />
+
+    <!-- Create Remote Thread -->
+    <CreateRemoteThread onmatch="include" />
+
+    <!-- Process Access -->
+    <ProcessAccess onmatch="include" />
+
+    <!-- File Created -->
+    <FileCreate onmatch="include" />
+
+    <!-- Registry Events -->
+    <RegistryEvent onmatch="include" />
+
+    <!-- File Stream Hash -->
+    <FileCreateStreamHash onmatch="include" />
+
+    <!-- DNS Query -->
+    <DnsQuery onmatch="include" />
+
+    <!-- File Deleted -->
+    <FileDelete onmatch="include" />
+
+    <!-- Process Tampering -->
+    <ProcessTampering onmatch="include" />
+
+  </EventFiltering>
+</Sysmon>
