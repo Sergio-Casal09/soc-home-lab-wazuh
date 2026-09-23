@@ -13,7 +13,7 @@ Windows/Active Directory.
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 El objetivo del proyecto es construir un entorno SOC aislado en VirtualBox
 capaz de:
@@ -30,7 +30,7 @@ capaz de:
 
 ---
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 ```text
                          INTERNET
@@ -93,7 +93,7 @@ SOC-LAB
 ```
 ---
 
-### 🔧 Tecnologías utilizadas
+### Tecnologías utilizadas
 
 - VirtualBox
 - Windows Server 2022
@@ -112,7 +112,7 @@ SOC-LAB
 
 ---
 
-### 🏢 Active Directory
+### Active Directory
 El dominio utilizado en el laboratorio es:
 
 ```text
@@ -155,7 +155,7 @@ La auditoría avanzada incluye:
 
 ---
 
-### 🔎 Windows Telemetry
+### Windows Telemetry
 
 ### PowerShell Logging
 
@@ -191,7 +191,7 @@ Sysmon se instaló en CLIENT01 para obtener telemetría de:
 
 ---
 
-### 🛡️ Wazuh
+### Wazuh
 
 CLIENT01 ejecuta Wazuh Agent y envía eventos al servidor:
 
@@ -236,7 +236,7 @@ Windows
 ```
 ---
 
-### 🚨 Detecciones personalizadas
+### Detecciones personalizadas
 
 ### 100100 — Windows Failed Logon
 
@@ -370,7 +370,7 @@ T1059.001 — PowerShell
 
 ---
 
-### 🧪 Validación de detecciones
+### Validación de detecciones
 
 Las detecciones fueron probadas mediante actividad controlada dentro del laboratorio.
 
@@ -385,7 +385,7 @@ Las detecciones fueron probadas mediante actividad controlada dentro del laborat
 
 ---
 
-### 🧠 MITRE ATT&CK
+### MITRE ATT&CK
 
 | Táctica           | Técnica                           | Evidencia                | Regla  |
 |-------------------|-----------------------------------|--------------------------|--------|
@@ -396,7 +396,7 @@ Las detecciones fueron probadas mediante actividad controlada dentro del laborat
 
 ---
 
-### 📊 Dashboard SOC
+### Dashboard SOC
 
 Se creó un dashboard de Wazuh denominado:
 
@@ -413,7 +413,7 @@ El dashboard proporciona una vista operativa del laboratorio y facilita el anál
 
 ---
 
-### 📸 Evidencias
+### Evidencias
 
 Las evidencias del laboratorio se encuentran en:
 
@@ -436,7 +436,7 @@ docs/SOC_Home_Lab_Informe_Final.pdf
 ```
 ---
 
-### 📁 Estructura del repositorio
+### Estructura del repositorio
 
 ```text
 soc-home-lab-wazuh/
@@ -466,7 +466,7 @@ soc-home-lab-wazuh/
 ```
 ---
 
-### 🔐 Seguridad
+### Seguridad
 
 Este proyecto utiliza un entorno de laboratorio aislado.
 
@@ -483,7 +483,7 @@ Las pruebas se realizaron exclusivamente dentro del entorno controlado del labor
 
 ---
 
-### 📚 Objetivos de aprendizaje
+### Objetivos de aprendizaje
 
 Este proyecto permitió practicar:
 
@@ -501,14 +501,14 @@ Este proyecto permitió practicar:
 
 ---
 
-### 📄 Documentación
+### Documentación
 
 El informe técnico completo se encuentra en:
 
 ```text
 docs/SOC_Home_Lab_Informe_Final.pdf
 ```
-### 🚀 Estado del proyecto
+### Estado del proyecto
 
 #### Completado
 
@@ -529,6 +529,6 @@ Visualization
     ↓
 Evidence
 ```
-### 👤 Proyecto personal
+### Proyecto personal
 
 Laboratorio desarrollado como proyecto práctico de formación orientado a operaciones de seguridad (SOC), monitorización, detección y análisis de eventos Windows.
