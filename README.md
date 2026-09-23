@@ -95,7 +95,6 @@ SOC-LAB
 
 ### 🔧 Tecnologías utilizadas
 
-
 - VirtualBox
 - Windows Server 2022
 - Windows 11
