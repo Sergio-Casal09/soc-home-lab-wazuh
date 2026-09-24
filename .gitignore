@@ -1,1 +1,46 @@
+# VirtualBox
+*.vdi
+*.vhd
+*.vmdk
+*.ova
+*.ovf
+*.sav
+*.vbox-prev
 
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Linux
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Credentials / secrets
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.p12
+credentials.txt
+passwords.txt
+
+# IDEs
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
